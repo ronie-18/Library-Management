@@ -276,18 +276,12 @@ $name = $_SESSION['name'];
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="user/books.php" class="menu-item">
-                    <i class="fas fa-book"></i>
-                    <span>Available Books</span>
-                </a>
+                
                 <a href="user/my_books.php" class="menu-item">
                     <i class="fas fa-book-open"></i>
                     <span>My Books</span>
                 </a>
-                <a href="user/request_book.php" class="menu-item">
-                    <i class="fas fa-search"></i>
-                    <span>Request Book</span>
-                </a>
+                
             </div>
             <div class="sidebar-footer">
                 <a href="auth/logout.php" class="logout-btn">
