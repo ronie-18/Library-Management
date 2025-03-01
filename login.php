@@ -6,6 +6,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
+    // Check for Admin Login
+    if ($email === "admin@gmail.com" && $password === "admin123@") {
+        $_SESSION['admin'] = true;
+        $_SESSION['name'] = "Administrator";
+        $_SESSION['email'] = $email;
+        $_SESSION['success'] = "Admin login successful!";
+
+        header("Location: admin_dashboard.php"); // Redirect to admin dashboard
+        exit();
+    }
+
     // Fetch user from the database
     $stmt = $con->prepare("SELECT std_id, name, email, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -23,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $email;
             $_SESSION['success'] = "Login successful!";
 
-            header("Location: dashboard.php"); // Redirect to dashboard or home page
+            header("Location: dashboard.php"); // Redirect to user dashboard
             exit();
         } else {
             $_SESSION['error'] = "Incorrect email or password.";
